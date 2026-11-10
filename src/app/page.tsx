@@ -45,9 +45,9 @@ const groups = [
 export default function TestIndexPage() {
   return (
     <main className="mx-auto max-w-[880px] px-4 py-14 md:py-20">
-      <h1 className="cl-serif text-[56px] leading-none md:text-[76px]">CoLaunch, redesigned.</h1>
+      <h1 className="cl-serif text-[56px] leading-none md:text-[76px]">CoLaunch</h1>
       <div className="mb-12 mt-6">
-        <Tip>Sample data only. Click anything: nothing here sends emails or charges cards.</Tip>
+        <Tip float>Sample data only. Click anything: nothing here sends emails or charges cards.</Tip>
       </div>
 
       <div className="space-y-11">

@@ -11,10 +11,12 @@ export function Mascot({
   size = 72,
   mood = "happy",
   bob = false,
+  float = false,
 }: {
   size?: number;
   mood?: "happy" | "cheer";
   bob?: boolean;
+  float?: boolean;
 }) {
   return (
     <svg
@@ -22,9 +24,9 @@ export function Mascot({
       width={size}
       height={(size * 96) / 80}
       viewBox="0 0 80 96"
-      className={`shrink-0 ${bob ? "cl-bob" : ""}`}
+      className={`shrink-0 ${bob ? "cl-bob" : float ? "cl-float" : ""}`}
     >
-      <path d="M31 74c1 10 5 16 9 20 4-4 8-10 9-20z" fill="var(--cl-peach)" />
+      <path className="cl-flame" d="M31 74c1 10 5 16 9 20 4-4 8-10 9-20z" fill="var(--cl-peach)" />
       <path d="M21 50 8 66c-2 3 0 7 4 6l13-4z" fill="var(--cl-brand-press)" />
       <path d="M59 50l13 16c2 3 0 7-4 6l-13-4z" fill="var(--cl-brand-press)" />
       <path
@@ -64,14 +66,16 @@ export function Tip({
   children,
   mood,
   size = 56,
+  float = false,
 }: {
   children: React.ReactNode;
   mood?: "happy" | "cheer";
   size?: number;
+  float?: boolean;
 }) {
   return (
     <div className="flex items-end gap-3">
-      <Mascot size={size} mood={mood} />
+      <Mascot size={size} mood={mood} float={float} />
       <div className="relative mb-2 rounded-2xl border-2 border-(--cl-line) bg-(--cl-card) px-4 py-3 text-[15px] leading-snug text-(--cl-ink-2)">
         <span
           aria-hidden

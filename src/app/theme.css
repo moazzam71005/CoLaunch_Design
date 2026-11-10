@@ -228,6 +228,22 @@ a.cl-tile:active {
 .cl-rise { animation: cl-rise 220ms ease-out both; }
 .cl-bob { animation: cl-bob 1.8s ease-in-out infinite; }
 
+/* Rocket mascot: the flame flickers from the nozzle down; float is a slow 3px hover */
+@keyframes cl-flame {
+  from { transform: scale(1, 0.86); }
+  to { transform: scale(0.9, 1.08); }
+}
+@keyframes cl-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+.cl-flame {
+  transform-box: fill-box;
+  transform-origin: 50% 0;
+  animation: cl-flame 0.7s ease-in-out infinite alternate;
+}
+.cl-float { animation: cl-float 3.2s ease-in-out infinite; }
+
 @media (prefers-reduced-motion: reduce) {
   .cl-scope *,
   .cl-scope *::before,
