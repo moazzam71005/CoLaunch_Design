@@ -1,0 +1,243 @@
+/*
+ * CoLaunch design preview theme (applies to every page).
+ * Colors and fonts come from co-launch.app: warm paper, ink, one brand red, Instrument Serif.
+ * Friendly and game-like through shape and feedback: chunky tiles, press-down buttons,
+ * step paths, small wins. Never through glows, gradients, blur or pulsing dots.
+ */
+
+.cl-scope {
+  --cl-paper: oklch(98.5% 0.005 80);
+  --cl-card: #ffffff;
+  --cl-cream: oklch(96.5% 0.012 80);
+  --cl-sand: oklch(93% 0.016 75);
+  --cl-line: oklch(90% 0.01 80);
+  --cl-line-strong: oklch(83% 0.014 70);
+
+  --cl-ink: oklch(15% 0.02 25);
+  --cl-ink-press: oklch(5% 0.01 25);
+  --cl-ink-2: oklch(32% 0.02 30);
+  --cl-muted: oklch(46% 0.02 30);
+
+  --cl-brand: oklch(53% 0.21 26);
+  --cl-brand-hover: oklch(56% 0.21 26);
+  --cl-brand-press: oklch(42% 0.18 26);
+  --cl-brand-tint: oklch(95.5% 0.03 30);
+  --cl-brand-line: oklch(82% 0.09 28);
+
+  --cl-peach: oklch(85% 0.09 45);
+  --cl-peach-tint: oklch(95% 0.035 55);
+
+  --cl-green: oklch(56% 0.13 150);
+  --cl-green-press: oklch(45% 0.12 150);
+  --cl-green-tint: oklch(95.5% 0.035 150);
+  --cl-green-line: oklch(82% 0.08 150);
+  --cl-green-text: oklch(42% 0.11 150);
+
+  --cl-amber: oklch(76% 0.14 75);
+  --cl-amber-tint: oklch(96% 0.045 85);
+  --cl-amber-text: oklch(47% 0.1 65);
+
+  --cl-serif: var(--cl-font-serif), "Instrument Serif", "Times New Roman", serif;
+  --cl-sans: var(--cl-font-sans), "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  background: var(--cl-paper);
+  color: var(--cl-ink);
+  font-family: var(--cl-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+.cl-scope ::selection {
+  background: var(--cl-peach);
+  color: var(--cl-ink);
+}
+
+.cl-serif {
+  font-family: var(--cl-serif);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.cl-num {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Buttons: solid edge that presses down ---------- */
+.cl-btn {
+  --cl-edge: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 46px;
+  padding: 0 1.25rem;
+  border-radius: 14px;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  transition: transform 90ms ease, box-shadow 90ms ease, background-color 150ms ease;
+}
+.cl-btn:active:not(:disabled) {
+  transform: translateY(calc(var(--cl-edge) - 1px));
+}
+.cl-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+.cl-btn-sm {
+  --cl-edge: 3px;
+  min-height: 38px;
+  padding: 0 0.875rem;
+  font-size: 0.875rem;
+  border-radius: 12px;
+}
+.cl-btn-lg {
+  min-height: 54px;
+  padding: 0 1.75rem;
+  font-size: 1.0625rem;
+}
+
+.cl-btn-primary {
+  background: var(--cl-brand);
+  color: #fff;
+  box-shadow: 0 var(--cl-edge) 0 var(--cl-brand-press);
+}
+.cl-btn-primary:hover:not(:disabled) { background: var(--cl-brand-hover); }
+.cl-btn-primary:active:not(:disabled) { box-shadow: 0 1px 0 var(--cl-brand-press); }
+
+.cl-btn-green {
+  background: var(--cl-green);
+  color: #fff;
+  box-shadow: 0 var(--cl-edge) 0 var(--cl-green-press);
+}
+.cl-btn-green:active:not(:disabled) { box-shadow: 0 1px 0 var(--cl-green-press); }
+
+.cl-btn-ink {
+  background: var(--cl-ink);
+  color: #fff;
+  box-shadow: 0 var(--cl-edge) 0 var(--cl-ink-press);
+}
+.cl-btn-ink:active:not(:disabled) { box-shadow: 0 1px 0 var(--cl-ink-press); }
+
+.cl-btn-quiet {
+  background: var(--cl-card);
+  color: var(--cl-ink);
+  border: 2px solid var(--cl-line-strong);
+  box-shadow: 0 var(--cl-edge) 0 var(--cl-line-strong);
+}
+.cl-btn-quiet:hover:not(:disabled) { background: var(--cl-cream); }
+.cl-btn-quiet:active:not(:disabled) { box-shadow: 0 1px 0 var(--cl-line-strong); }
+
+.cl-btn-text {
+  min-height: 38px;
+  padding: 0 0.25rem;
+  color: var(--cl-ink-2);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--cl-line-strong);
+  text-underline-offset: 4px;
+}
+.cl-btn-text:hover { color: var(--cl-ink); text-decoration-color: currentColor; }
+.cl-btn-text:active:not(:disabled) { transform: none; }
+
+/* ---------- Surfaces ---------- */
+.cl-card {
+  background: var(--cl-card);
+  border: 2px solid var(--cl-line);
+  border-radius: 18px;
+}
+
+/* Chunky surface for things you can pick or act on */
+.cl-tile {
+  background: var(--cl-card);
+  border: 2px solid var(--cl-line);
+  border-bottom-width: 5px;
+  border-radius: 18px;
+  transition: border-color 120ms ease, background-color 120ms ease, transform 90ms ease;
+}
+button.cl-tile,
+a.cl-tile {
+  cursor: pointer;
+}
+button.cl-tile:hover,
+a.cl-tile:hover {
+  background: var(--cl-cream);
+  border-color: var(--cl-line-strong);
+}
+button.cl-tile:active,
+a.cl-tile:active {
+  transform: translateY(2px);
+}
+.cl-tile[aria-pressed="true"],
+.cl-tile[aria-checked="true"],
+.cl-tile[data-on="true"] {
+  background: var(--cl-brand-tint);
+  border-color: var(--cl-brand);
+}
+
+.cl-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--cl-muted);
+}
+
+/* ---------- Form fields ---------- */
+.cl-input {
+  width: 100%;
+  min-height: 48px;
+  padding: 0.7rem 0.875rem;
+  background: var(--cl-card);
+  border: 2px solid var(--cl-line-strong);
+  border-radius: 12px;
+  color: var(--cl-ink);
+  font-size: 1rem;
+  line-height: 1.5;
+  transition: border-color 120ms ease;
+}
+.cl-input:focus {
+  outline: none;
+  border-color: var(--cl-brand);
+}
+.cl-input::placeholder {
+  color: var(--cl-muted);
+}
+
+/* ---------- Focus ---------- */
+.cl-scope :focus-visible {
+  outline: 2px solid var(--cl-brand);
+  outline-offset: 2px;
+}
+
+/* ---------- Small wins ---------- */
+@keyframes cl-pop {
+  0% { transform: scale(0.7); opacity: 0; }
+  60% { transform: scale(1.08); opacity: 1; }
+  100% { transform: scale(1); }
+}
+@keyframes cl-rise {
+  from { transform: translateY(10px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+@keyframes cl-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+.cl-pop { animation: cl-pop 280ms ease-out both; }
+.cl-rise { animation: cl-rise 220ms ease-out both; }
+.cl-bob { animation: cl-bob 1.8s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .cl-scope *,
+  .cl-scope *::before,
+  .cl-scope *::after {
+    transition-duration: 0ms !important;
+    animation: none !important;
+  }
+  .cl-btn:active:not(:disabled),
+  button.cl-tile:active,
+  a.cl-tile:active {
+    transform: none;
+  }
+}
